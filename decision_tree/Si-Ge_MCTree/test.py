@@ -19,35 +19,25 @@ def get_reward(struct):
     return cond
 
 
-### Initialize the tree with the following parameters
-### no_positions: number of positions in each structure. For example, 16 atoms.
-### atom_types: atom types. For example, types of atoms: 0 for Si and 1 for Ge
-### atom_const: number of each atom type in the structure. For example, 8 atoms Si and 8 atoms Ge. Default is None
-### get_reward: the experiment simulation function
-### positions_order: define the order to assign atoms to the positions in the structure: "direct", "reverse",
-    #shuffle# or a list. Default is "reverse"
-### max_flag: if True the algorithm searches for maximum reward, else for minimum
-### expand_children : number of children to expand at each node. Default is "1". i.e. expand one child at a time.
-### play_out: number of play outs et each node. Default is 1. Please note if you set the parameter use_combo to True,
-    #play_out can not be 1
-## play_out_selection: when performing multiple playouts, best or mean is returned. Deafualt is best
-### space: numpy ndarray representing the candidates space. Default is None. If specified the "no_positions",
-    # "atom_types", and "atom_const" parameters will be ignored and there values will be taken from the data.
-    # This is a slower option, not recommended unless there are complex constraints on the structures
-    # data needs to be assigned if you want to use the option use_combo=True
-### ucb: it can be either "mean" or "best", it represents taking either average or best ucb score for Monte Carlo tree
-    # search. Default is "mean"
-### use_combo: weather to use Bayesian optimisation or not in combination with Monte Carlo tree search.
-    # COMBO package is used to engineer the palyout instead of random selection.
-### combo_play_out: total number of candidates to be examind by COMBO.
-### combo_init_random: the initial random selection for Bayesian optimisation. Default is 1
-### combo_step: the interval for Bayesian optimisation to perfrom hyperparameter optimization. Default is 1
-### combo_lvl: the level of the tree at which start to apply Bayesian optimisation. Default is 1 (apply at all levels)
-
-myTree=mdts.Tree(no_positions=16, atom_types=[0,1], atom_const=[8,8], get_reward=get_reward, positions_order=list(range(16)),
-                max_flag=True,expand_children=2, play_out=1, play_out_selection="best", space=None, candidate_pool_size=100,
-                 ucb="mean", use_combo=True, combo_play_out=20, combo_init_random=5, combo_step=5, combo_lvl=5)
-
+myTree=mdts.Tree(no_positions=16,  #number of positions in each structure. For example, 16 atoms.
+                 atom_types=[0,1], #atom types. For example, types of atoms: 0 for Si and 1 for Ge.
+                 atom_const=[8,8], #number of each atom type in the structure. For example, 8 atoms Si and 8 atoms Ge.
+                 get_reward=get_reward,           #the experiment simulation function.
+                 positions_order=list(range(16)), # define the order to assign atoms to the positions in the structure.
+                 max_flag=True,     #if True the algorithm searches for maximum reward, else for minimum.
+                 expand_children=2, #number of children to expand at each node, 1 means expand one child at a time.
+                 play_out=1,        # number of play outs et each node.
+                 play_out_selection="best", # when performing multiple playouts, best or mean is returned.
+                 space=None,                # numpy ndarray representing the candidates space. 
+                 candidate_pool_size=100,
+                 ucb="mean",           # taking either average or best ucb score for MC tree search.
+                 use_combo=True,       # weather to use Bayesian optimisation or not in combination with MC tree search.
+                 combo_play_out=20,    # total number of candidates to be examind by COMBO.
+                 combo_init_random=5,  # the initial random selection for Bayesian optimisation.
+                 combo_step=5,         # the interval for Bayesian optimisation to perfrom hyperparameter optimization.
+                 combo_lvl=5)          # the level of the tree at which start to apply Bayesian optimisation.
+ 
+ 
 ### Start the search for certain number of candidates and returns an object of type Result contains the result of the search
 res=myTree.search(display=True,no_candidates=500)
 
