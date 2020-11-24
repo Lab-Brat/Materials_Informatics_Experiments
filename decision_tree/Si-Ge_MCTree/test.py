@@ -31,7 +31,7 @@ myTree=mdts.Tree(no_positions=16,  #number of positions in each structure. For e
                  space=None,                # numpy ndarray representing the candidates space. 
                  candidate_pool_size=100,
                  ucb="mean",           # taking either average or best ucb score for MC tree search.
-                 use_combo=True,       # weather to use Bayesian optimisation or not in combination with MC tree search.
+                 use_combo=False,       # weather to use Bayesian optimisation or not in combination with MC tree search.
                  combo_play_out=20,    # total number of candidates to be examind by COMBO.
                  combo_init_random=5,  # the initial random selection for Bayesian optimisation.
                  combo_step=5,         # the interval for Bayesian optimisation to perfrom hyperparameter optimization.
@@ -39,7 +39,7 @@ myTree=mdts.Tree(no_positions=16,  #number of positions in each structure. For e
  
  
 ### Start the search for certain number of candidates and returns an object of type Result contains the result of the search
-res=myTree.search(display=True,no_candidates=500)
+res=myTree.search(display=True,no_candidates=20)
 
 # ### Optimal reward
 print (res.optimal_fx)
@@ -74,17 +74,17 @@ print (res.avg_node_visit)
 ### Save results
 res.save('results.npz')
 
-### Load results
-new_res=mdts.Result()
-new_res.load('results.npz')
-print (new_res.optimal_fx)
+# ### Load results
+# new_res=mdts.Result()
+# new_res.load('results.npz')
+# print (new_res.optimal_fx)
 
 
-### The tree can be saved
-mdts.save_tree(myTree,'Tree_file')
-del myTree
+# ### The tree can be saved
+# mdts.save_tree(myTree,'Tree_file')
+# del myTree
 
-### Load the tree and continue the search
-myNewTree = mdts.load_tree('Tree_file')
-newTree_res=myNewTree.search(display=True, no_candidates=600)
-print (newTree_res.checked_candidates_size)
+# ### Load the tree and continue the search
+# myNewTree = mdts.load_tree('Tree_file')
+# newTree_res=myNewTree.search(display=True, no_candidates=600)
+# print (newTree_res.checked_candidates_size)
