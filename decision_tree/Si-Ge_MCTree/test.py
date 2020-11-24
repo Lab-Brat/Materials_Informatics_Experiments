@@ -38,41 +38,59 @@ myTree=mdts.Tree(no_positions=16,  #number of positions in each structure. For e
                  combo_lvl=5)          # the level of the tree at which start to apply Bayesian optimisation.
  
  
-### Start the search for certain number of candidates and returns an object of type Result contains the result of the search
-res=myTree.search(display=True,no_candidates=20)
+def output_func():
+    # ### Optimal reward
+    print (res.optimal_fx)
 
-# ### Optimal reward
-print (res.optimal_fx)
+    # ### List of optimal candidates
+    print (res.optimal_candidate)
 
-# ### List of optimal candidates
-print (res.optimal_candidate)
+    # ### List of tuples with the candidates examined and their rewards
+    print (res.checked_candidates_DS)
 
-# ### List of tuples with the candidates examined and their rewards
-print (res.checked_candidates_DS)
+    # ### Number of examined candidates
+    print (res.checked_candidates_size)
 
-# ### Number of examined candidates
-print (res.checked_candidates_size)
+    ### List of chosen candidates in order
+    print (res.checked_candidates)
 
-### List of chosen candidates in order
-print (res.checked_candidates)
+    ### List of simulated candidates rewards in order
+    print (res.fx)
 
-### List of simulated candidates rewards in order
-print (res.fx)
+    ### List of current best reward
+    print (res.best_fx)
 
-### List of current best reward
-print (res.best_fx)
+    ### Maximum depth reached
+    print (res.max_depth_reached)
 
-### Maximum depth reached
-print (res.max_depth_reached)
+    ### Number of nodes constructed
+    print (res.no_nodes)
 
-### Number of nodes constructed
-print (res.no_nodes)
+    ### Average visit per node
+    print (res.avg_node_visit)
 
-### Average visit per node
-print (res.avg_node_visit)
 
-### Save results
-res.save('results.npz')
+# def gen_res(itrs):
+#     res_list = []
+#     for i in range(1, itrs+1):
+#         res_str = 'res'+str(i)
+#         res_list.append(res_str)
+
+#     return res_list
+
+
+for i in range(3):
+    res = 0
+    ### Start the search for certain number of candidates and returns an object of type Result contains the result of the search
+    res=myTree.search(display=True,no_candidates=20)
+    output_func()
+    ### Save results
+    res.save('results'+ str(i) +'.npz')
+
+
+
+
+
 
 # ### Load results
 # new_res=mdts.Result()
