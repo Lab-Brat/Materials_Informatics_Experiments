@@ -5,7 +5,9 @@ import itertools
 
 
 ### Thermal conductivity for (Si:Ge=1:1) alloy with 16 atoms in the interfacial structure
-DB_16=np.load('./DB_16.npy', allow_pickle=True).item()
+# DB_16=np.load('./DB_16.npy', allow_pickle=True).item()
+
+DB_16=np.load('./DB_16.npy').item()
 print(max(DB_16.values()))
 print(len(DB_16))
 
@@ -79,13 +81,18 @@ def output_func():
 #     return res_list
 
 
-for i in range(3):
-    res = 0
-    ### Start the search for certain number of candidates and returns an object of type Result contains the result of the search
-    res=myTree.search(display=True,no_candidates=20)
-    output_func()
+### Start the search for certain number of candidates and returns an object of type Result contains the result of the search
+res=myTree.search(display=True,no_candidates=20)
+# output_func()
+res.save('results10.npz')
+
+
+# for i in range(10):
+    # res=myTree.search(display=True,no_candidates=20)
+
     ### Save results
-    res.save('results'+ str(i) +'.npz')
+    # res.save('results'+ str(i) +'.npz')
+    # del(res)
 
 
 
