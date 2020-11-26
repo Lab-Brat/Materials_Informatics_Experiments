@@ -5,9 +5,7 @@ import itertools
 
 
 ### Thermal conductivity for (Si:Ge=1:1) alloy with 16 atoms in the interfacial structure
-# DB_16=np.load('./DB_16.npy', allow_pickle=True).item()
-
-DB_16=np.load('./DB_16.npy').item()
+DB_16=np.load('./DB_16.npy', allow_pickle=True).item()
 print(max(DB_16.values()))
 print(len(DB_16))
 
@@ -20,20 +18,20 @@ def get_reward(struct):
         print ("error")
     return cond
 
-
-myTree=mdts.Tree(no_positions=16,  #number of positions in each structure. For example, 16 atoms.
-                 atom_types=[0,1], #atom types. For example, types of atoms: 0 for Si and 1 for Ge.
-                 atom_const=[8,8], #number of each atom type in the structure. For example, 8 atoms Si and 8 atoms Ge.
-                 get_reward=get_reward,           #the experiment simulation function.
+ 
+myTree=mdts.Tree(no_positions=16,   # number of positions in each structure. For example, 16 atoms.
+                 atom_types=[0,1],  # atom types. For example, types of atoms: 0 for Si and 1 for Ge.
+                 atom_const=[8,8],  # number of each atom type in the structure. For example, 8 atoms Si and 8 atoms Ge.
+                 get_reward=get_reward,           # the experiment simulation function.
                  positions_order=list(range(16)), # define the order to assign atoms to the positions in the structure.
-                 max_flag=True,     #if True the algorithm searches for maximum reward, else for minimum.
-                 expand_children=2, #number of children to expand at each node, 1 means expand one child at a time.
-                 play_out=1,        # number of play outs et each node.
+                 max_flag=True,     # if True the algorithm searches for maximum reward, else for minimum.
+                 expand_children=1, # number of children to expand at each node, 1 means expand one child at a time.
+                 play_out=2,        # number of play outs et each node.
                  play_out_selection="best", # when performing multiple playouts, best or mean is returned.
                  space=None,                # numpy ndarray representing the candidates space. 
                  candidate_pool_size=100,
                  ucb="mean",           # taking either average or best ucb score for MC tree search.
-                 use_combo=False,       # weather to use Bayesian optimisation or not in combination with MC tree search.
+                 use_combo=False,      # weather to use Bayesian optimisation or not in combination with MC tree search.
                  combo_play_out=20,    # total number of candidates to be examind by COMBO.
                  combo_init_random=5,  # the initial random selection for Bayesian optimisation.
                  combo_step=5,         # the interval for Bayesian optimisation to perfrom hyperparameter optimization.
@@ -82,8 +80,8 @@ def output_func():
 
 
 ### Start the search for certain number of candidates and returns an object of type Result contains the result of the search
-res=myTree.search(display=True,no_candidates=20)
-# output_func()
+res=myTree.search(display=True,no_candidates=1010)
+output_func()
 res.save('results10.npz')
 
 
