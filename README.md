@@ -1,5 +1,5 @@
 # Materials_Informatics_Experiments
-This repository contains my Materials Informatics codes that I write for school and for fun.
+This repository contains my Materials Informatics codes that I write for school and for fun.\
 decision_tree:
 * Si-Ge_MCTree: Application of Monte Carlo Search Tree to the problem of finding optimal structure for thermal conductivity (both highest and lowest thermal conductivity, depending on the problem) in the system of Si and Ge atoms.
 * decision_tree.ipynb: Practice code, making decision tree from Iris Dataset.
