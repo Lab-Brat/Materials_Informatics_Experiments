@@ -1,6 +1,10 @@
 # Materials_Informatics_Experiments
 This repository contains my Materials Informatics codes that I write for school and for fun.\
 ## bayesian_opt:
+* BO_example.py: 
+* SiSi_14.data:
+* bo_log_02: 
+* result_analysis.ipynb
 
 ## decision_tree:
 * Si-Ge_MCTree: Application of Monte Carlo Search Tree to the problem of finding optimal structure for thermal conductivity (both highest and lowest thermal conductivity, depending on the problem) in the system of Si and Ge atoms.
@@ -9,6 +13,13 @@ This repository contains my Materials Informatics codes that I write for school 
 * weather_ID3.ipynb: Homework, apply ID3 decision tree from scrath in solving a problem of weather prediction.
 
 ## dim_reduction:
+* fatigue_kappa: 
+* linear_discriminant_analysis.ipynb:
+* non-negative_matrix_factorization.ipynb:
+* pca_kernel.ipynb:
+* principal_component_analysis.ipynb:
+* recursive_feature_elimination.ipynb:
+* variance_threshhold.ipynb:
 
 ## linear_regression: 
 * ex1_fatigue_prediction: Homework, predicting materials fatigue with Linear Regression models (medium dataset). 
