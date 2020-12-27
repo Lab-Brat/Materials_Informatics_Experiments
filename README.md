@@ -13,13 +13,13 @@ This repository contains my Materials Informatics codes that I write for school 
 * weather_ID3.ipynb: Homework, apply ID3 decision tree from scrath in solving a problem of weather prediction.
 
 ## dim_reduction:
-* fatigue_kappa: 
-* linear_discriminant_analysis.ipynb:
-* non-negative_matrix_factorization.ipynb:
-* pca_kernel.ipynb:
-* principal_component_analysis.ipynb:
-* recursive_feature_elimination.ipynb:
-* variance_threshhold.ipynb:
+* fatigue_kappa: Folder containing two datasets, on which the dimentionality reduction was applied.
+* linear_discriminant_analysis.ipynb: Linear discriminant analysis with sklearn.
+* non-negative_matrix_factorization.ipynb: Non-negative matrix factorization with sklearn.
+* pca_kernel.ipynb: Principal component analysis with sklearn.
+* principal_component_analysis.ipynb: Principal component analysis with sklearn.
+* recursive_feature_elimination.ipynb: Recursive feature eliminated.
+* variance_threshhold.ipynb: Setting Variance Threshold with sklearn.
 
 ## linear_regression: 
 * ex1_fatigue_prediction: Homework, predicting materials fatigue with Linear Regression models (medium dataset). 
